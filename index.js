@@ -21,11 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   (function() {
     if (typeof Storage !== "undefined") {
-      gamerScore.innerHTML = localStorage.getItem("gamerScore");
-      botScore.innerHTML = localStorage.getItem("botScore");
-    } else {
-      localStorage.setItem("gamerScore", 0);
-      localStorage.setItem("botScore", 0);
+      if (localStorage.length > 0) {
+        gamerScore.innerHTML = localStorage.getItem("gamerScore");
+        botScore.innerHTML = localStorage.getItem("botScore");
+      } else {
+        localStorage.setItem("gamerScore", 0);
+        localStorage.setItem("botScore", 0);
+      }
     }
   })();
 
