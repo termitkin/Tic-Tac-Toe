@@ -16,18 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
     [0, 4, 8],
     [2, 4, 6]
   ];
-  let winner = null;
+  let winner = false;
   let botThinking = false;
 
   (function() {
-    if (typeof Storage !== "undefined") {
-      if (localStorage.length > 0) {
-        gamerScore.innerHTML = localStorage.getItem("gamerScore");
-        botScore.innerHTML = localStorage.getItem("botScore");
-      } else {
-        localStorage.setItem("gamerScore", 0);
-        localStorage.setItem("botScore", 0);
-      }
+    if (localStorage.length > 0) {
+      gamerScore.innerHTML = localStorage.getItem("gamerScore");
+      botScore.innerHTML = localStorage.getItem("botScore");
+    } else {
+      localStorage.setItem("gamerScore", 0);
+      localStorage.setItem("botScore", 0);
     }
   })();
 
@@ -50,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
             fieldCells[elem].innerHTML === "X"
         )
       ) {
-        winner = "X";
+        winner = true;
         message.innerHTML = "YOU win this round";
-        let currentScore = Number(localStorage.getItem("gamerScore")) + 1;
+        const currentScore = Number(localStorage.getItem("gamerScore")) + 1;
         localStorage.setItem("gamerScore", currentScore);
         gamerScore.innerHTML = localStorage.getItem("gamerScore");
       } else if (
@@ -62,17 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
             fieldCells[elem].innerHTML === "O"
         )
       ) {
-        winner = "O";
+        winner = true;
         message.innerHTML = "BOT win this round";
-        let currentScore = Number(localStorage.getItem("botScore")) + 1;
+        const currentScore = Number(localStorage.getItem("botScore")) + 1;
         localStorage.setItem("botScore", currentScore);
         botScore.innerHTML = localStorage.getItem("botScore");
       }
     });
 
-    if (winner === null && fieldCells.every(el => el.innerHTML !== "")) {
-      winner = "draw";
+    if (winner === false && fieldCells.every(el => el.innerHTML !== "")) {
+      winner = true;
       message.innerHTML = "this round is a DRAW";
+    } else if (winner === false) {
+      message.innerHTML = "Your turn!";
     }
   };
 
@@ -88,8 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const botMakeMove = () => {
     let moveMaked = 0;
-    let botCanWin = [];
-    let playerCanWin = [];
+    const botCanWin = [];
+    const playerCanWin = [];
 
     for (let i = 0; i < winnerCombinations.length; i += 1) {
       if (
@@ -166,14 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bot = () => {
     message.innerHTML = "Bot is thinking..";
-    if (getEmptyCells().length > 1 && winner === null) {
+    if (getEmptyCells().length > 1 && winner === false) {
       const randomThinkingTime = Math.round(Math.random() * 2000);
       botThinking = true;
       setTimeout(() => {
         botMakeMove();
-        botThinking = false;
-        message.innerHTML = "Your turn!";
         defineWinner();
+        botThinking = false;
       }, randomThinkingTime);
     } else {
       botMakeMove();
@@ -188,12 +187,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const makeMove = e => {
-    if (e.target.innerHTML === "" && winner === null && botThinking === false) {
+    if (
+      e.target.innerHTML === "" &&
+      winner === false &&
+      botThinking === false
+    ) {
       e.target.innerHTML = "X";
 
       defineWinner();
 
-      if (winner === null) {
+      if (winner === false) {
         bot();
       }
     }
