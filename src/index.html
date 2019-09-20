@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="index.js"></script>
     <title>Tic Tac Toe</title>
     <style>
       html,
@@ -29,15 +28,19 @@
         padding: 25px;
         display: flex;
         flex-wrap: wrap;
-        align-content: flex-start;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
       }
       @media screen and (min-width: 450px) {
         .wrap {
+          flex-direction: row;
+          align-items: flex-start;
           justify-content: flex-start;
+          align-content: flex-start;
         }
       }
       .button {
+        width: 100%;
         cursor: pointer;
         border: 1px solid #ccc;
         background-color: #fff;
@@ -117,7 +120,18 @@
         margin: 3px 0;
       }
 
+      .gamer,
+      .bot {
+        width: 100%;
+        margin-bottom: 7px;
+        padding: 0 2px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+      }
+
       .message {
+        height: 20px;
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
       }
@@ -134,8 +148,8 @@
       <h1 class="title">Tic Tac Toe!</h1>
       <div class="score">
         <h2 class="title">Scores</h2>
-        <div class="gamer">Your - <span class="gamer__score"></span></div>
-        <div class="bot">Bot - <span class="bot__score"></span></div>
+        <div class="gamer">You&nbsp;<span class="gamer__score"></span></div>
+        <div class="bot">Bot&nbsp;<span class="bot__score"></span></div>
         <button id="refresh_JS" class="button score__button">
           Refresh Score
         </button>
@@ -156,5 +170,6 @@
         <div id="message_JS" class="message content__message"></div>
       </div>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
