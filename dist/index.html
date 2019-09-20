@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <style>html,
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        min-height: 100%;
+        border: 1px solid transparent;
+      }
+      .wrap {
+        width: calc(100% - 100px);
+        max-width: 450px;
+        min-height: 450px;
+        margin: 25px auto;
+        border: 5px solid #78b6d0;
+        padding: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+      }
+      @media screen and (min-width: 450px) {
+        .wrap {
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: flex-start;
+          align-content: flex-start;
+        }
+      }
+      .button {
+        width: 100%;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        text-align: center;
+        padding: 5px;
+        outline: none;
+      }
+      .button:hover,
+      .button:focus {
+        border: 3px solid #f06;
+      }
+      .field {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+      }
+      .content {
+        width: 195px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+      }
+      @media screen and (min-width: 450px) {
+        .content {
+          margin-left: 25px;
+        }
+      }
+      .content__button {
+        margin: 5px 0;
+      }
+      .content__button:hover,
+      .content__button:focus {
+        margin: 3px 0;
+      }
+      .content__message {
+        margin-top: 10px;
+      }
+      .field__cell {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 62px;
+        height: 62px;
+        font-size: 26px;
+        color: #f06;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+        cursor: pointer;
+        transition: 0.25s border, 0.25s background-color;
+        outline: none;
+      }
+      .field__cell:hover,
+      .field__cell:focus {
+        border: 1px solid #f06;
+        background-color: #ffc;
+      }
+      .score {
+        width: 110px;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-bottom: 25px;
+        align-items: center;
+      }
+      @media screen and (min-width: 450px) {
+        .score {
+          margin-bottom: 0;
+        }
+      }
+      .score__button {
+        margin: 5px 0;
+      }
+      .score__button:hover,
+      .score__button:focus {
+        margin: 3px 0;
+      }
+
+      .gamer,
+      .bot {
+        width: 100%;
+        margin-bottom: 7px;
+        padding: 0 2px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .message {
+        height: 20px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .title {
+        width: 100%;
+        margin: 0 0 15px 0;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }</style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1 class="title">Tic Tac Toe!</h1>
+      <div class="score">
+        <h2 class="title">Scores</h2>
+        <div class="gamer">You&nbsp;<span class="gamer__score"></span></div>
+        <div class="bot">Bot&nbsp;<span class="bot__score"></span></div>
+        <button id="refresh_JS" class="button score__button">
+          Refresh Score
+        </button>
+      </div>
+      <div class="content">
+        <div class="field">
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+          <button class="field__cell"></button>
+        </div>
+        <button id="again_JS" class="button content__button">Again!</button>
+        <div id="message_JS" class="message content__message"></div>
+      </div>
+    </div>
+    <script src="/src.e31bb0bc.js"></script>
+  </body>
+</html>
