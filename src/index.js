@@ -11,6 +11,8 @@ import { state } from "./state";
   } else {
     localStorage.setItem("playerScore", 0);
     localStorage.setItem("botScore", 0);
+    state.playerScore.innerHTML = localStorage.getItem("playerScore");
+    state.botScore.innerHTML = localStorage.getItem("botScore");
   }
 })();
 
