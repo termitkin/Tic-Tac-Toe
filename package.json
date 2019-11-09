@@ -4,21 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "size": "size-limit",
     "start": "npx parcel src/index.html",
     "build": "npx parcel build src/index.html --experimental-scope-hoisting --public-url https://termitkin.github.io/tic-tac-toe/ ",
     "build-push": "git subtree push --prefix dist origin gh-pages"
   },
+  "size-limit": [
+    {
+      "limit": "2 KB",
+      "path": "dist/*.js",
+      "webpack": false
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/termitkin/tic-tac-toe.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/termitkin/tic-tac-toe/issues"
-  },
-  "homepage": "https://github.com/termitkin/tic-tac-toe#readme",
+  "homepage": "https://github.com/termitkin/tic-tac-toe",
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^2.1.6",
     "parcel-bundler": "^1.12.3"
   }
 }
