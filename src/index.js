@@ -14,20 +14,20 @@ import { state } from "./state";
   }
 })();
 
-const firstMove = Math.round(Math.random());
-if (firstMove > 0) {
+const firstMove = Math.random();
+if (firstMove > 0.5) {
   bot();
 } else {
   state.message.innerHTML = "Your turn!";
 }
 
-const makeMove = e => {
+const makeMove = event => {
   if (
-    e.target.innerHTML === "" &&
+    event.target.innerHTML === "" &&
     state.winner === false &&
     state.botThinking === false
   ) {
-    e.target.innerHTML = "X";
+    event.target.innerHTML = "X";
 
     defineWinner();
 

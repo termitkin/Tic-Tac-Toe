@@ -1,37 +1,27 @@
 import { state } from "./state";
 
 export const defineWinner = () => {
-  state.winnerCombinations.forEach(el => {
-    if (
-      el.every(
-        elem =>
-          state.fieldCells[elem].innerHTML !== "" &&
-          state.fieldCells[elem].innerHTML === "X"
-      )
-    ) {
+  state.winnerCombinations.forEach(combination => {
+    if (combination.every(cell => state.fieldCells[cell].innerHTML === "X")) {
       state.winner = true;
       state.message.innerHTML = "YOU win this round";
       const currentScore = Number(localStorage.getItem("playerScore")) + 1;
+      state.playerScore.innerHTML = currentScore;
       localStorage.setItem("playerScore", currentScore);
-      state.playerScore.innerHTML = localStorage.getItem("playerScore");
     } else if (
-      el.every(
-        elem =>
-          state.fieldCells[elem].innerHTML !== "" &&
-          state.fieldCells[elem].innerHTML === "O"
-      )
+      combination.every(cell => state.fieldCells[cell].innerHTML === "O")
     ) {
       state.winner = true;
       state.message.innerHTML = "BOT win this round";
       const currentScore = Number(localStorage.getItem("botScore")) + 1;
+      state.botScore.innerHTML = currentScore;
       localStorage.setItem("botScore", currentScore);
-      state.botScore.innerHTML = localStorage.getItem("botScore");
     }
   });
 
   if (
     state.winner === false &&
-    state.fieldCells.every(el => el.innerHTML !== "")
+    state.fieldCells.every(cell => cell.innerHTML !== "")
   ) {
     state.winner = true;
     state.message.innerHTML = "this round is a DRAW";
