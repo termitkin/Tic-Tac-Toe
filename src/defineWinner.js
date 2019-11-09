@@ -11,9 +11,9 @@ export const defineWinner = () => {
     ) {
       state.winner = true;
       state.message.innerHTML = "YOU win this round";
-      const currentScore = Number(localStorage.getItem("gamerScore")) + 1;
-      localStorage.setItem("gamerScore", currentScore);
-      state.gamerScore.innerHTML = localStorage.getItem("gamerScore");
+      const currentScore = Number(localStorage.getItem("playerScore")) + 1;
+      localStorage.setItem("playerScore", currentScore);
+      state.playerScore.innerHTML = localStorage.getItem("playerScore");
     } else if (
       el.every(
         elem =>

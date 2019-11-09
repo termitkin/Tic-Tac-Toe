@@ -6,10 +6,10 @@ import { state } from "./state";
 
 (function() {
   if (localStorage.length > 0) {
-    state.gamerScore.innerHTML = localStorage.getItem("gamerScore");
+    state.playerScore.innerHTML = localStorage.getItem("playerScore");
     state.botScore.innerHTML = localStorage.getItem("botScore");
   } else {
-    localStorage.setItem("gamerScore", 0);
+    localStorage.setItem("playerScore", 0);
     localStorage.setItem("botScore", 0);
   }
 })();

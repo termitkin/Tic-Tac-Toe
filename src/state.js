@@ -1,6 +1,6 @@
 export const state = {
   fieldCells: [...document.querySelectorAll(".field__cell")],
-  gamerScore: document.querySelector(".gamer__score"),
+  playerScore: document.querySelector(".gamer__score"),
   botScore: document.querySelector(".bot__score"),
   refresh: document.querySelector("#refresh_JS"),
   again: document.querySelector("#again_JS"),
