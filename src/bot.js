@@ -7,11 +7,11 @@ export const bot = () => {
   state.message.innerHTML = "Bot is thinking..";
   if (emptyCellsList().length > 1 && state.winner === false) {
     const randomThinkingTime = Math.round(Math.random() * 2000);
-    state.botThinking = true;
+    state.botIsThinking = true;
     setTimeout(() => {
       botMakeMove();
       defineWinner();
-      state.botThinking = false;
+      state.botIsThinking = false;
     }, randomThinkingTime);
   } else if (emptyCellsList().length === 1 && state.winner === false) {
     botMakeMove();

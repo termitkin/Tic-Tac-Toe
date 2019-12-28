@@ -5,7 +5,7 @@ export const state = {
   refresh: document.querySelector("#refresh_JS"),
   again: document.querySelector("#again_JS"),
   message: document.querySelector("#message_JS"),
-  winnerCombinations: [
+  winningCombinations: [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -16,5 +16,5 @@ export const state = {
     [2, 4, 6]
   ],
   winner: false,
-  botThinking: false
+  botIsThinking: false
 };

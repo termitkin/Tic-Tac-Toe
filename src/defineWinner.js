@@ -1,21 +1,21 @@
 import { state } from "./state";
 
 export const defineWinner = () => {
-  state.winnerCombinations.forEach(combination => {
+  state.winningCombinations.forEach(combination => {
     if (combination.every(cell => state.fieldCells[cell].innerHTML === "X")) {
       state.winner = true;
       state.message.innerHTML = "YOU win this round";
-      const currentScore = Number(localStorage.getItem("playerScore")) + 1;
-      state.playerScore.innerHTML = currentScore;
-      localStorage.setItem("playerScore", currentScore);
+      const currentPlayerScore = Number(localStorage.getItem("playerScore"));
+      state.playerScore.innerHTML = currentPlayerScore + 1;
+      localStorage.setItem("playerScore", currentPlayerScore + 1);
     } else if (
       combination.every(cell => state.fieldCells[cell].innerHTML === "O")
     ) {
       state.winner = true;
       state.message.innerHTML = "BOT win this round";
-      const currentScore = Number(localStorage.getItem("botScore")) + 1;
-      state.botScore.innerHTML = currentScore;
-      localStorage.setItem("botScore", currentScore);
+      const currentBotScore = Number(localStorage.getItem("botScore"));
+      state.botScore.innerHTML = currentBotScore + 1;
+      localStorage.setItem("botScore", currentBotScore + 1);
     }
   });
 
